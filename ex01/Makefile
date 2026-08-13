@@ -1,8 +1,7 @@
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = Bureaucrat
-SRC = main.cpp Bureaucrat.cpp
-HEADERFILE = Bureaucrat.hpp
+NAME = Form
+SRC = main.cpp Bureaucrat.cpp Form.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
