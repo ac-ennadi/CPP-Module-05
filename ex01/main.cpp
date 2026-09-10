@@ -5,7 +5,7 @@ int main() {
     try {
         Bureaucrat boss("Boss", 1);
         Bureaucrat worker("Worker", 100);
-        Form form("Important form", 50, 25);
+        Form form("Important document", 50, 25);
 
         std::cout << form << std::endl;
         worker.signForm(form);
@@ -17,7 +17,7 @@ int main() {
     }
 
     try {
-        Form badForm("Bad form", 0, 50);
+        Form invalidForm("Invalid document", 0, 50);
     }
     catch (std::exception& e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;
