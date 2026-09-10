@@ -1,9 +1,9 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
+# include <exception>
 # include <iostream>
 # include <string>
-# include <exception>
 
 class Bureaucrat {
 private:
@@ -34,6 +34,6 @@ public:
     };
 };
 
-std::ostream& operator<<(std::ostream& out, const Bureaucrat& b);
+std::ostream& operator<<(std::ostream& out, const Bureaucrat& bureaucrat);
 
 #endif

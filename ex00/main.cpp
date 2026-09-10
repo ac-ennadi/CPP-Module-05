@@ -15,7 +15,7 @@ int main() {
 
     try {
         Bureaucrat boss("Boss", 0);
-    } 
+    }
     catch (std::exception& e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
@@ -27,10 +27,10 @@ int main() {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
-   try {
+    try {
         Bureaucrat overachiever("Overachiever", 1);
         std::cout << overachiever << std::endl;
-        overachiever.incrementGrade(); // This should throw
+        overachiever.incrementGrade();
     }
     catch (std::exception& e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;
@@ -39,7 +39,7 @@ int main() {
     try {
         Bureaucrat underachiever("Underachiever", 150);
         std::cout << underachiever << std::endl;
-        underachiever.decrementGrade(); // This should throw
+        underachiever.decrementGrade();
     }
     catch (std::exception& e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;
