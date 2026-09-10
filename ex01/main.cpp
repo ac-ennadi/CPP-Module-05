@@ -2,7 +2,7 @@
 #include "Form.hpp"
 
 int main() {
-    std::cout << "--- Basic signing test ---" << std::endl;
+    std::cout << "Signing a form" << std::endl;
     try {
         Bureaucrat boss("Boss", 1);
         Bureaucrat worker("Worker", 100);
@@ -17,7 +17,7 @@ int main() {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
-    std::cout << "\n--- Invalid bureaucrat grades ---" << std::endl;
+    std::cout << "\nInvalid bureaucrat grades" << std::endl;
     try {
         Bureaucrat tooHigh("Too high", 0);
     }
@@ -32,11 +32,9 @@ int main() {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
-    std::cout << "\n--- Grade changes ---" << std::endl;
+    std::cout << "\nChanging grades" << std::endl;
     try {
         Bureaucrat high("High", 1);
-        Bureaucrat low("Low", 150);
-
         high.incrementGrade();
     }
     catch (std::exception& e) {
@@ -57,7 +55,7 @@ int main() {
     middle.decrementGrade();
     std::cout << "After decrement: " << middle << std::endl;
 
-    std::cout << "\n--- Valid boundary grades ---" << std::endl;
+    std::cout << "\nBoundary grades" << std::endl;
     try {
         Bureaucrat best("Best", 1);
         Bureaucrat last("Last", 150);
@@ -68,7 +66,7 @@ int main() {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
-    std::cout << "\n--- Invalid form grades ---" << std::endl;
+    std::cout << "\nInvalid form grades" << std::endl;
     try {
         Form invalidForm("Invalid form", 0, 50);
     }
@@ -83,7 +81,7 @@ int main() {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
-    std::cout << "\n--- Copy and assignment ---" << std::endl;
+    std::cout << "\nCopy and assignment" << std::endl;
     Bureaucrat signer("Signer", 1);
     Form original("Original form", 50, 25);
     original.beSigned(signer);
