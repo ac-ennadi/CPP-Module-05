@@ -2,6 +2,7 @@
 #include "Form.hpp"
 
 int main() {
+    std::cout << "--- Basic signing test ---" << std::endl;
     try {
         Bureaucrat boss("Boss", 1);
         Bureaucrat worker("Worker", 100);
@@ -16,12 +17,81 @@ int main() {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
+    std::cout << "\n--- Invalid bureaucrat grades ---" << std::endl;
     try {
-        Form invalidForm("Invalid document", 0, 50);
+        Bureaucrat tooHigh("Too high", 0);
     }
     catch (std::exception& e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
+
+    try {
+        Bureaucrat tooLow("Too low", 151);
+    }
+    catch (std::exception& e) {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+
+    std::cout << "\n--- Grade changes ---" << std::endl;
+    try {
+        Bureaucrat high("High", 1);
+        Bureaucrat low("Low", 150);
+
+        high.incrementGrade();
+    }
+    catch (std::exception& e) {
+        std::cerr << "Increment failed: " << e.what() << std::endl;
+    }
+
+    try {
+        Bureaucrat low("Low", 150);
+        low.decrementGrade();
+    }
+    catch (std::exception& e) {
+        std::cerr << "Decrement failed: " << e.what() << std::endl;
+    }
+
+    Bureaucrat middle("Middle", 75);
+    middle.incrementGrade();
+    std::cout << "After increment: " << middle << std::endl;
+    middle.decrementGrade();
+    std::cout << "After decrement: " << middle << std::endl;
+
+    std::cout << "\n--- Valid boundary grades ---" << std::endl;
+    try {
+        Bureaucrat best("Best", 1);
+        Bureaucrat last("Last", 150);
+        std::cout << best << std::endl;
+        std::cout << last << std::endl;
+    }
+    catch (std::exception& e) {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+
+    std::cout << "\n--- Invalid form grades ---" << std::endl;
+    try {
+        Form invalidForm("Invalid form", 0, 50);
+    }
+    catch (std::exception& e) {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+
+    try {
+        Form invalidForm("Invalid form", 50, 151);
+    }
+    catch (std::exception& e) {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+
+    std::cout << "\n--- Copy and assignment ---" << std::endl;
+    Bureaucrat signer("Signer", 1);
+    Form original("Original form", 50, 25);
+    original.beSigned(signer);
+    Form copy(original);
+    Form assigned;
+    assigned = original;
+    std::cout << copy << std::endl;
+    std::cout << assigned << std::endl;
 
     return 0;
 }
