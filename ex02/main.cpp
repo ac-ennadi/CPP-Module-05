@@ -1,41 +1,39 @@
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
-
-class TestForm : public AForm {
-public:
-    TestForm(const std::string& name, int gradeToSign, int gradeToExecute)
-        : AForm(name, gradeToSign, gradeToExecute) {}
-
-    void execute(const Bureaucrat& executor) const {
-        checkRequirements(executor);
-        std::cout << executor.getName() << " is doing the work."
-                  << std::endl;
-    }
-};
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include <ctime>
+#include <cstdlib>
 
 int main() {
-    try {
-        Bureaucrat boss("Boss", 1);
-        Bureaucrat worker("Worker", 100);
-        TestForm form("Important document", 50, 25);
+    srand(time(NULL));
 
-        std::cout << form << std::endl;
-        worker.signForm(form);
-        boss.signForm(form);
-        worker.executeForm(form);
-        boss.executeForm(form);
-        std::cout << form << std::endl;
-    }
-    catch (std::exception& e) {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
-    }
+    std::cout << "--- Creating Bureaucrats ---" << std::endl;
+    Bureaucrat boss("The Boss", 1);
+    Bureaucrat middleManager("Middle Manager", 50);
+    Bureaucrat intern("Intern", 150);
 
-    try {
-        TestForm invalidForm("Invalid document", 0, 50);
-    }
-    catch (std::exception& e) {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
-    }
+    std::cout << boss << "\n" << middleManager << "\n" << intern << "\n" << std::endl;
+
+    std::cout << "--- Testing Shrubbery Creation Form ---" << std::endl;
+    ShrubberyCreationForm shrub("Home");
+    intern.executeForm(shrub);
+    boss.signForm(shrub);
+    intern.executeForm(shrub);
+    middleManager.executeForm(shrub);
+
+    std::cout << "\n--- Testing Robotomy Request Form ---" << std::endl;
+    RobotomyRequestForm robot("Bender");
+    middleManager.signForm(robot);
+    middleManager.executeForm(robot);
+    boss.executeForm(robot);
+    boss.executeForm(robot);
+
+    std::cout << "\n--- Testing Presidential Pardon Form ---" << std::endl;
+    PresidentialPardonForm pardon("Ford Prefect");
+    middleManager.signForm(pardon);
+    boss.signForm(pardon);
+    boss.executeForm(pardon);
 
     return 0;
 }
