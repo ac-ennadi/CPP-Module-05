@@ -1,24 +1,22 @@
-CPP = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = Bureaucrat
-SRC = main.cpp Bureaucrat.cpp
-HEADERFILE = Bureaucrat.hpp
-OBJ = $(SRC:.cpp=.o)
+NAME = bureaucrat
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+RM = rm -f
+
+SRCS = main.cpp Bureaucrat.cpp
+OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CPP) $(CPPFLAGS) $(OBJ) -o $(NAME)
-
-%.o: %.cpp
-	$(CPP) $(CPPFLAGS) -c $< -o $@
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 clean:
-	rm -f $(OBJ) a.out
+	$(RM) $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
-.SECONDARY:
+.PHONY: all clean fclean re
