@@ -17,7 +17,7 @@ clean:
 	$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) Home_shrubbery
 
 re: fclean all
 
