@@ -11,15 +11,15 @@ int main() {
     std::cout << "--- Creating Bureaucrats ---" << std::endl;
     Bureaucrat boss("The Boss", 1);
     Bureaucrat middleManager("Middle Manager", 50);
-    Bureaucrat intern("Intern", 150);
+    Bureaucrat lowerManager("lowerManager", 150);
 
-    std::cout << boss << "\n" << middleManager << "\n" << intern << "\n" << std::endl;
+    std::cout << boss << "\n" << middleManager << "\n" << lowerManager << "\n" << std::endl;
 
     std::cout << "--- Testing Shrubbery Creation Form ---" << std::endl;
     ShrubberyCreationForm shrub("Home");
-    intern.executeForm(shrub);
+    lowerManager.executeForm(shrub);
     boss.signForm(shrub);
-    intern.executeForm(shrub);
+    lowerManager.executeForm(shrub);
     middleManager.executeForm(shrub);
 
     std::cout << "\n--- Testing Robotomy Request Form ---" << std::endl;
